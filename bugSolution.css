@@ -1,0 +1,25 @@
+/* bugSolution.css */
+
+/* This solution uses JavaScript to detect focus and apply styles based on `document.hasFocus()`
+   This is a fallback strategy. :focus-visible should ideally work on its own. */
+
+button {
+  outline: none;
+}
+
+button:focus {
+  box-shadow: 0 0 0 2px blue;
+}
+
+<script>
+  document.querySelectorAll('button').forEach(button => {
+    button.addEventListener('focus', (event) => {
+       if (document.hasFocus()){
+           button.style.boxShadow = '0 0 0 2px blue';
+       }
+    });
+    button.addEventListener('blur', (event) => {
+      button.style.boxShadow = 'none';
+    })
+  })
+</script>
